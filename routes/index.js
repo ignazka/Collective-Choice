@@ -1,5 +1,8 @@
 // requires router function of express
 const router = require("express").Router();
+//requier Models
+const User = require("../models/user.model");
+const Comment = require("../models/comment.model");
 
 //usage of router for index
 //GET
@@ -22,11 +25,12 @@ router.get("/comments", (req, res, next) => {
 //POST
 
 router.post("/signup", async (req, res, next) => {
-  const newUser = req.body;
+  const newUserData = req.body;
   //setting up salt
   //hash password
   //create user in MongoDB
-  res.redirect("/", { userData });
+  const newUser = await User.create(newUserData);
+  res.redirect("/");
 });
 
 router.post("/login", async (req, res, next) => {
