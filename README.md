@@ -109,7 +109,7 @@ The url to your repository and to your deployed project
 
 [Repository Link](https://github.com/ignazka/Collective-Choice/)
 
-[Deploy Link](http://heroku.com)
+[Deploy Link](https://collective-choice.herokuapp.com/)
 
 ### Slides
 
