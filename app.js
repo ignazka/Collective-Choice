@@ -1,35 +1,32 @@
 //requirements
-const express = require("express")
+const express = require("express");
 // for OS independent path construction
 const path = require("path");
 // require handlebars for dynamic views
-const hbs = require('hbs')
+const hbs = require("hbs");
 // require .env for port setup
-require('dotenv').config()
-
+require("dotenv").config();
 
 // creating instance of express server and config
-const app = express()
-app.use(express.json())
-app.use(express.urlencoded())
-
+const app = express();
+app.use(express.json());
+app.use(express.urlencoded());
 
 // Normalizes the path to the views folder
 app.set("views", path.join(__dirname, ".", "views"));
-
 
 // Sets the view engine to handlebars
 app.set("view engine", "hbs");
 // Handles access to the public folder
 app.use(express.static(path.join(__dirname, ".", "public")));
+hbs.registerPartials(__dirname + "/views/partials");
 
 // reference of port from .env or 3000
-const {PORT} = process.env
+const { PORT } = process.env;
 
 // start server
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`))
-
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
 
 //Router handling
-const index = require("./routes/index")
-app.use("/", index)
+const index = require("./routes/index");
+app.use("/", index);
