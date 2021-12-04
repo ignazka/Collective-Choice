@@ -11,8 +11,12 @@ const userSchema = new Schema({
     unique: true,
     required: true,
   },
-  password: String,
-  required: true,
+  password: {
+    type: String,
+    required: true,
+  },
 });
 
 module.exports = model("User", userSchema);
+
+// https://mongoosejs.com/docs/schematypes.html
