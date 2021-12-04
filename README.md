@@ -52,17 +52,17 @@ Comments:
 - POST /signup
   - redirects to / (user, anon)
   - sends body: (if no errors, if error redirects to /signup)
-    - username
-    - email
-    - password
+        - username
+        - email
+        - password
 - GET /login
   - redirects to / if user logged in (user)
   - renders the login form (anon)
 - POST /login
   - redirects to / if user logged in (user)
   - sends body: 
-    - username
-    - password
+        - username
+        - password
 - POST /logout
   - redirects to / 
 
@@ -97,15 +97,15 @@ upvotes: Int
 
 ## Links
 
-### Trello
+### Trello/Kanban
 
-[Link to your trello board](https://trello.com) or picture of your physical board
+[Link to our Kanban board](https://github.com/ignazka/Collective-Choice/projects/1)
 
 ### Git
 
 The url to your repository and to your deployed project
 
-[Repository Link](http://github.com)
+[Repository Link](https://github.com/ignazka/Collective-Choice/)
 
 [Deploy Link](http://heroku.com)
 
@@ -113,5 +113,5 @@ The url to your repository and to your deployed project
 
 The url to your presentation slides
 
-[Slides Link](http://slides.com)
+[Presentation Link](https://docs.google.com/presentation/d/172qhJvnk4zBE8IvQfn9HmVzQ8Jmnw8Tmc4jCkHYCPIw/edit?usp=sharing)
 
