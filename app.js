@@ -30,3 +30,21 @@ app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
 //Router handling
 const index = require("./routes/index");
 app.use("/", index);
+
+const mongoose = require("mongoose");
+// ℹ️ Sets the MongoDB URI for our app to have access to it.
+const MONGODB_URL =
+  process.env.MONGODB_URL || "mongodb://localhost/collective-choice";
+
+async function mongoConnect() {
+  try {
+    await mongoose.connect(MONGODB_URL, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    });
+    console.log("Connected to Mongo!");
+  } catch (error) {
+    console.error("Error connecting to MongoDB: ", error);
+  }
+}
+mongoConnect();
