@@ -1,0 +1,5 @@
+/* resets css for any browser */
+* {
+    margin: 0;
+    padding: 0;
+}
