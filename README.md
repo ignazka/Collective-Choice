@@ -65,6 +65,8 @@ Comments:
         - password
 - POST /logout
   - redirects to / 
+- GET /comments
+  - renders comment view
 
 ## Models
 
