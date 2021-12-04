@@ -3,7 +3,7 @@ const express = require("express")
 // for OS independent path construction
 const path = require("path");
 // require handlebars for dynamic views
-const hbs = require('handlebars')
+const hbs = require('hbs')
 // require .env for port setup
 require('dotenv').config()
 
@@ -19,7 +19,7 @@ app.set("views", path.join(__dirname, ".", "views"));
 
 
 // Sets the view engine to handlebars
-app.set("view engine", "handlebars");
+app.set("view engine", "hbs");
 // Handles access to the public folder
 app.use(express.static(path.join(__dirname, ".", "public")));
 
@@ -28,3 +28,8 @@ const {PORT} = process.env
 
 // start server
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`))
+
+
+//Router handling
+const index = require("./routes/index")
+app.use("/", index)
