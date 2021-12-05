@@ -1,7 +1,10 @@
 <h1>WELCOME</h1>
-{{#each users}}
-{{username}}
-{{comment.content}}
-{{/each}}
-{{> comment}}
+<section>
+  {{#each users}}
+  <p>{{username}}</p>
+  <p>{{comment.content}}</p>
+  <hr>
+  {{/each}}
+  {{> comment}}
+</section>
 
