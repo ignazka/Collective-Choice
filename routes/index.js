@@ -1,5 +1,7 @@
 // requires router function of express
 const router = require("express").Router();
+// requires bcryptjs for password encryption
+const bcrypt = require('bcrypt');
 //requier Models
 const User = require("../models/user.model");
 const Comment = require("../models/comment.model");
@@ -26,16 +28,25 @@ router.get("/comments", (req, res, next) => {
 //POST
 
 router.post("/signup", async (req, res, next) => {
-  const newUserData = req.body;
+  const {username, email, password} = req.body;
+  // const hasMissingCredentials = !email || !password || !username; //Error handling //later
   //setting up salt
+  const saltRounds = 10
+  const salt = await bcrypt.genSalt(saltRounds)
   //hash password
+  const hashedPassword = await bcrypt.hash(req.body.password, salt)
   //create user in MongoDB
-  const newUser = await User.create(newUserData);
+  const newUserData = {
+    "username": username,
+    "email": email,
+    "password":hashedPassword
+  }
+  const newUser = await User.create(newUserData)
   res.redirect("/");
 });
 
 router.post("/login", async (req, res, next) => {
-  const userData = req.body;
+  const { email, password } = req.body;
   //get data from Database
   //compare password
   res.redirect("/");
