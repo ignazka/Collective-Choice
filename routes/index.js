@@ -6,8 +6,9 @@ const Comment = require("../models/comment.model");
 
 //usage of router for index
 //GET
-router.get("/", (req, res, next) => {
-  res.render("index");
+router.get("/", async (req, res, next) => {
+    const users = await User.find().populate("comment")
+    res.render("index", {users});
 });
 router.get("/login", (req, res, next) => {
   res.render("login");
