@@ -51,7 +51,11 @@ router.post("/login", async (req, res, next) => {
     //get data from Database
     const foundUser = await User.findOne({email})
     //compare password
-    const isCorrectPassword = await bcrypt.compare(password, foundUser.password)
+    const isVerified = await bcrypt.compare(password, foundUser.password)
+    // if user is verified cookie will be changed and saved in database:Sessions and browser
+    if(isVerified){
+      req.session.currentUser = foundUser.username;   
+     }
     res.redirect("/");
   }
   catch(error){
