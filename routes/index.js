@@ -58,10 +58,22 @@ router.post("/login", async (req, res, next) => {
      }
     res.redirect("/");
   }
+  
   catch(error){
     console.error(`An error occured while trying to login: ${error}`)
 
   }
 });
+
+router.post('/logout', async (req, res, next) =>{
+  try {
+    req.session.destroy(() => {
+      res.redirect("/")
+    })
+  } catch(error){
+ console.error(`An Error occured while trying to logout ${error}`)
+  }
+})
+
 
 module.exports = router;
