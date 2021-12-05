@@ -15,8 +15,8 @@ const userSchema = new Schema({
     type: String,
     required: true,
   },
-});
-
+  comment: {type: Schema.Types.ObjectId, ref: "Comment"}
+}); 
 module.exports = model("User", userSchema);
 
 // https://mongoosejs.com/docs/schematypes.html
