@@ -5,6 +5,7 @@ const commentSchema = new Schema({
     type: String,
     required: true,
   },
+  isUpvote: Boolean,    //shows if comment is generally an up or downvote
   downvotes: Number,
   upvotes: Number,
 });
