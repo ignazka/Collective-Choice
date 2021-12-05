@@ -1,0 +1,90 @@
+[
+    {
+        "_id": {
+            "$oid": "61ac8e77da4daffc5fb18b00"
+        },
+        "username": "yeti",
+        "email": "yeti@yeti.de",
+        "password": "123",
+        "comment": {
+            "$oid": "61ac9247da4daffc5fb18b48"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "61ac8e77da4daffc5fb18b01"
+        },
+        "username": "Bernd",
+        "email": "bernd@bernd.de",
+        "password": "456",
+        "comment": {
+            "$oid": "61ac9247da4daffc5fb18b49"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "61ac8e77da4daffc5fb18b02"
+        },
+        "username": "Sylvia",
+        "email": "sylvana@pop.de",
+        "password": "pentatonik",
+        "comment": {
+            "$oid": "61ac9247da4daffc5fb18b4a"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "61ac8e77da4daffc5fb18b03"
+        },
+        "username": "Katana",
+        "email": "dagger@ysword.com",
+        "password": "Dolce 123123123",
+        "comment": {
+            "$oid": "61ac9247da4daffc5fb18b4b"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "61ac8e77da4daffc5fb18b04"
+        },
+        "username": "sweetboy99",
+        "email": "sweety@aol.com",
+        "password": "123",
+        "comment": {
+            "$oid": "61ac9247da4daffc5fb18b4c"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "61ac8e77da4daffc5fb18b05"
+        },
+        "username": "sweetgirl123",
+        "email": "sweety123@aol.com",
+        "password": "123",
+        "comment": {
+            "$oid": "61ac9247da4daffc5fb18b4d"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "61ac8e77da4daffc5fb18b06"
+        },
+        "username": "Sveniator99",
+        "email": "sweeeeny@gmx.com",
+        "password": "ioajepuzed9w7ez08273te08927g8273t0872308403r",
+        "comment": {
+            "$oid": "61ac9247da4daffc5fb18b4e"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "61ac8e77da4daffc5fb18b07"
+        },
+        "username": "pommesschranke",
+        "email": "schranke@rot-weiss.com",
+        "password": "lekka-lekka",
+        "comment": {
+            "$oid": "61ac9247da4daffc5fb18b4f"
+        }
+    }
+]
