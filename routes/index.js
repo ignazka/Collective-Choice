@@ -46,10 +46,18 @@ router.post("/signup", async (req, res, next) => {
 });
 
 router.post("/login", async (req, res, next) => {
-  const { email, password } = req.body;
-  //get data from Database
-  //compare password
-  res.redirect("/");
+  try{
+    const { email, password } = req.body;
+    //get data from Database
+    const foundUser = await User.findOne({email})
+    //compare password
+    const isCorrectPassword = await bcrypt.compare(password, foundUser.password)
+    res.redirect("/");
+  }
+  catch(error){
+    console.error(`An error occured while trying to login: ${error}`)
+
+  }
 });
 
 module.exports = router;
