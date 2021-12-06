@@ -1,7 +1,7 @@
 <h1>Comments</h1>
-<div class="comment">
-    {{#each commentsInDatabase}}
-        {{> comment}}
-        <hr>
-    {{/each}}
-</div>
+{{#each users}}
+    <div class="comment">
+        User: {{username}}
+        {{> comment comment}}
+    </div>
+{{/each}}
