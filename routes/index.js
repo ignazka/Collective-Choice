@@ -22,9 +22,12 @@ router.get("/info", (req, res, next) => {
   res.render("info");
 });
 router.get("/comments", async (req, res, next) => {
-  const commentsInDatabase = await Comment.find()
-  console.log(commentsInDatabase[0].upvote+"")
-  res.render("comments", {commentsInDatabase});
+  try {
+    const commentsInDatabase = await Comment.find()
+    res.render("comments", {commentsInDatabase});
+  } catch (error) {
+    console.error(`An error occured while trying to login: ${error}`)
+  }
 });
 
 //POST
@@ -60,12 +63,18 @@ router.post("/login", async (req, res, next) => {
      }
     res.redirect("/");
   }
-  
   catch(error){
     console.error(`An error occured while trying to login: ${error}`)
-
   }
 });
+
+router.post('/create-comment', async (req, res, next) =>{
+  try {
+    res.redirect("/comments")
+  } catch(error){
+    console.error(`An Error occured while trying to logout ${error}`)
+  }
+})
 
 router.post('/logout', async (req, res, next) =>{
   try {
