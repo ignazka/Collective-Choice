@@ -9,8 +9,7 @@ const Comment = require("../models/comment.model");
 //usage of router for index
 //GET
 router.get("/", async (req, res, next) => {
-    const users = await User.find().populate("comment")
-    res.render("index", {users});
+    res.render("index");
 });
 router.get("/login", (req, res, next) => {
   res.render("login");
@@ -23,8 +22,8 @@ router.get("/info", (req, res, next) => {
 });
 router.get("/comments", async (req, res, next) => {
   try {
-    const commentsInDatabase = await Comment.find()
-    res.render("comments", {commentsInDatabase});
+    const users = await User.find().populate("comment")
+    res.render("comments", {users});
   } catch (error) {
     console.error(`An error occured while trying to login: ${error}`)
   }
