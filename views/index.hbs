@@ -1,10 +1,9 @@
 <h1>WELCOME</h1>
 <section>
   {{#each users}}
-  <p>{{username}}</p>
-  <p>{{comment.content}}</p>
+  <p>User: {{username}}</p>
+  {{> comment comment}}
   <hr>
   {{/each}}
-  {{> comment}}
 </section>
 
