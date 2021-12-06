@@ -3,7 +3,7 @@
     "$oid": "61ac9247da4daffc5fb18b48"
   },
   "content": "yetis planting trees!!!",
-  "isUpvotes": true,
+  "isUpvote": true,
   "downvotes": 5,
   "upvotes": 123
 },{
@@ -11,7 +11,7 @@
     "$oid": "61ac9247da4daffc5fb18b49"
   },
   "content": "Corona sucks in general...",
-  "isUpvotes": false,
+  "isUpvote": false,
   "downvotes": 5,
   "upvotes": 1023
 },{
@@ -19,7 +19,7 @@
     "$oid": "61ac9247da4daffc5fb18b4a"
   },
   "content": "Dogs are worth more than human lifeforms.",
-  "isUpvotes": true,
+  "isUpvote": true,
   "downvotes": 500,
   "upvotes": 123000
 },{
@@ -27,7 +27,7 @@
     "$oid": "61ac9247da4daffc5fb18b4b"
   },
   "content": "Rich peple waste our future anyway.",
-  "isUpvotes": false,
+  "isUpvote": false,
   "downvotes": 0,
   "upvotes": 69696969
 },{
@@ -35,7 +35,7 @@
     "$oid": "61ac9247da4daffc5fb18b4c"
   },
   "content": "mummy forgot to buy me some chocolate",
-  "isUpvotes": false,
+  "isUpvote": false,
   "downvotes": 53,
   "upvotes": 7
 },{
@@ -43,7 +43,7 @@
     "$oid": "61ac9247da4daffc5fb18b4d"
   },
   "content": "AI shall rule the world. All hail the silicone greatness 01100111 01101111 01100100",
-  "isUpvotes": false,
+  "isUpvote": false,
   "downvotes": 29897,
   "upvotes": 42
 },{
@@ -51,7 +51,7 @@
     "$oid": "61ac9247da4daffc5fb18b4e"
   },
   "content": "my baby left me",
-  "isUpvotes": false,
+  "isUpvote": false,
   "downvotes": 52,
   "upvotes": 1233
 },{
@@ -59,7 +59,7 @@
     "$oid": "61ac9247da4daffc5fb18b4f"
   },
   "content": "the secret of existence is infinite ",
-  "isUpvotes": true,
+  "isUpvote": true,
   "downvotes": 11,
   "upvotes": 1
 }]
