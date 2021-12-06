@@ -21,8 +21,10 @@ router.get("/signup", (req, res, next) => {
 router.get("/info", (req, res, next) => {
   res.render("info");
 });
-router.get("/comments", (req, res, next) => {
-  res.render("comments");
+router.get("/comments", async (req, res, next) => {
+  const commentsInDatabase = await Comment.find()
+  console.log(commentsInDatabase[0].upvote+"")
+  res.render("comments", {commentsInDatabase});
 });
 
 //POST
