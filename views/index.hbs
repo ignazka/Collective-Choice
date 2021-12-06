@@ -1,9 +1,13 @@
 <h1>WELCOME</h1>
-<section>
+<section class="doom-buttons">
+
+</section>
+
+<section class="comments">
   {{#each users}}
-  <p>User: {{username}}</p>
-  {{> comment comment}}
-  <hr>
+    <p>User: {{username}}</p>
+    {{> comment comment}}
+    <hr>
   {{/each}}
 </section>
 
