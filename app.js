@@ -17,7 +17,7 @@ const { NODE_ENV, SESS_SECRET, MONGODB_URL, PORT } = process.env;
 const app = express();
 
 app.use(express.json());
-app.use(express.urlencoded());
+app.use(express.urlencoded({ extended: true} ));
 
 // Normalizes the path to the views folder
 app.set("views", path.join(__dirname, ".", "views"));
