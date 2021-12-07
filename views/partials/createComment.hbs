@@ -1,5 +1,14 @@
 <form action="/create-comment" method="post">
     <label for="content">Comment</label>
-    <input type="text" name="content" id="content" placeholder="This world needs to ...">
+    <input
+        type="text"
+        name="content"
+        id="content"
+        placeholder="I have allergies. Nature is my enemy. World should end."
+    />
+    <select name="isUpvote" id="isUpvote">
+        <option value="false">Destroy the World</option>
+        <option value="true">Save the World</option>
+    </select>
     <button type="submit">Submit</button>
 </form>
