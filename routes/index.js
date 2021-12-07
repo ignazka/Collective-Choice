@@ -76,25 +76,21 @@ router.post("/login", async (req, res, next) => {
 
 router.post("/create-comment", async (req, res, next) => {
     try {
-        //new user just signesUp User: "Till" //comment: {type: Schema.Types.ObjectId, ref: "Comment"}
-        //he creates a new comment and submits it
+        //new user just signed Up | User: "Till" writes a new comment.
+        //New comment id will update tills comment reference in the database
         //get the content
         const { content, isUpvote } = req.body;
+        //create new comment
         const newCommentDocument = await Comment.create({
             content: content,
             isUpvote: isUpvote,
         });
         // add newComment._id to new users comment.reference in database
-        const currentUser = req.session.currentUser;
-        // const currentUserInDB = await User.find({"username": currentUser})
-        // console.log({currentUserInDB})
-        console.log("newCommentDocument: ", newCommentDocument._id);
         const updatedUser = await User.findOneAndUpdate(
-            { name: currentUser },
+            { username: req.session.currentUser },
             { comment: newCommentDocument._id },
             { new: true }
         );
-        console.log('updated user',updatedUser);
         res.redirect("/comments");
     } catch (error) {
         console.error(
