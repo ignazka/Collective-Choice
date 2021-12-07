@@ -3,7 +3,8 @@
 
 </section>
 
-<section class="comment-form">
-  {{> createComment}}
-</section>
-
+{{#if user}}
+  <section class="comment-form">
+    {{> createComment}}
+  </section>
+{{/if}}

@@ -57,10 +57,19 @@ router.post("/login", async (req, res, next) => {
     //compare password
     const isVerified = await bcrypt.compare(password, foundUser.password)
     // if user is verified cookie will be changed and saved in database:Sessions and browser
+
     if(isVerified){
-      req.session.currentUser = foundUser.username;   
+      req.session.currentUser = foundUser.username; 
+      console.log("#############SESSION#########")
+      console.log("reg session", req.session)
+      console.log("#############USER#########")
+      console.log("reg CurrentUser", req.session.currentUser)
+      const user = req.session.currentUser
+      res.render("index", { user });
      }
-    res.redirect("/");
+    else {
+      res.redirect("/")
+    }
   }
   catch(error){
     console.error(`An error occured while trying to login: ${error}`)
