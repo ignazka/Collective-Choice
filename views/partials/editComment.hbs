@@ -1,5 +1,9 @@
-<form action="/create-comment" method="post">
+<form action="/edit-comment" method="post" id='commentForm'>
     <label for="content">Comment</label>
-    <input type="text" name="content" id="content" value={{content}} >
+    <textarea
+        rows="4"
+        cols="50"
+        name="content"
+    >{{findUser.comment.content}}</textarea>
     <button type="submit">Update</button>
 </form>
