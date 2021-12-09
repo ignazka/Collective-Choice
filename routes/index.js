@@ -121,6 +121,34 @@ router.post("/edit-comment", async (req, res, next) => {
     }
 });
 
+router.post("/delete-user", async (req, res, next) => {
+    try {
+        console.log("Start deletion of user: ", req.session.currentUser);
+        const user = req.session.currentUser; //get current user
+        console.log(user)
+        const findUser = await User.findOne({ username: user });
+        console.log('find user:', findUser)
+        const commentID = await findUser.comment._id; //saves the comment id, linked to the user
+        console.log('comment id is: ', commentID)
+        await Comment.findOneAndDelete(
+            { _id: commentID }
+        );
+        console.log("Comment deleted")
+        await User.findOneAndDelete(
+            { username: user }
+        );
+        console.log("User deleted")
+        req.session.destroy(() => {
+            res.redirect("/");    
+
+        })
+    } catch (error) {
+        console.error(
+            `An Error occured while trying to delete your Account ${error}`
+        );
+    }
+});
+
 router.post("/logout", async (req, res, next) => {
     try {
         req.session.destroy(() => {
@@ -130,5 +158,6 @@ router.post("/logout", async (req, res, next) => {
         console.error(`An Error occured while trying to logout ${error}`);
     }
 });
+
 
 module.exports = router;
