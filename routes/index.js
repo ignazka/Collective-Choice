@@ -10,8 +10,11 @@ const Comment = require("../models/comment.model");
 //GET
 router.get("/", async (req, res, next) => {
     const user = req.session.currentUser;
+    // get data from user, who is already logged in
+    const findUser = await User.findOne({ username: user }).populate("comment");
+    // // send userData to index hbs to use as partial data, if not logged, no hbs parameter
     if (user) {
-        res.render("index", { user });
+        res.render("index", { user, findUser });
     } else {
         res.render("index");
     }
@@ -95,6 +98,25 @@ router.post("/create-comment", async (req, res, next) => {
     } catch (error) {
         console.error(
             `An Error occured while trying to create comment ${error}`
+        );
+    }
+});
+
+// user updates his comment
+router.post("/edit-comment", async (req, res, next) => {
+    try {
+        const user = req.session.currentUser; //get current user
+        const findUser = await User.findOne({ username: user }); //get current user from database
+        const commentID = findUser.comment._id; //saves the comment id, linked to the user
+        //updates the users comment content
+        await Comment.findOneAndUpdate(
+            { _id: commentID },
+            { content: req.body.content }
+        );
+        res.redirect("/comments");
+    } catch (error) {
+        console.error(
+            `An Error occured while trying to update your comment ${error}`
         );
     }
 });
