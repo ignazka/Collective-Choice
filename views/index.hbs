@@ -5,6 +5,10 @@
 
 {{#if user}}
   <section class="comment-form">
-    {{> createComment}}
+    {{#if findUser.comment}}
+        {{> editComment}}
+    {{else}}
+        {{> createComment}}
+    {{/if}}
   </section>
 {{/if}}
