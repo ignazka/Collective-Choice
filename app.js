@@ -32,6 +32,7 @@ hbs.registerPartials(__dirname + "/views/partials");
 // are we on a production site?
 const isProduction = NODE_ENV === 'production'
 // cookie configuration
+app.set("trust proxy", 1);
 app.use(
   session({
     // secret is the "password" for session to read your hashed cookie
