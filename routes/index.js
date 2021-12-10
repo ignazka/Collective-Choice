@@ -5,6 +5,9 @@ const bcrypt = require("bcrypt");
 //requier Models
 const User = require("../models/user.model");
 const Comment = require("../models/comment.model");
+//require middlewares
+const { isAnon, isLoggedIn } = require("../middlewares/index");
+
 
 //usage of router for index
 //GET
@@ -19,10 +22,10 @@ router.get("/", async (req, res, next) => {
         res.render("index");
     }
 });
-router.get("/login", (req, res, next) => {
+router.get("/login", isAnon, (req, res, next) => {
     res.render("login");
 });
-router.get("/signup", (req, res, next) => {
+router.get("/signup", isAnon, (req, res, next) => {
     res.render("signup");
 });
 router.get("/info", (req, res, next) => {
@@ -39,7 +42,7 @@ router.get("/comments", async (req, res, next) => {
 
 //POST
 
-router.post("/signup", async (req, res, next) => {
+router.post("/signup", isAnon, async (req, res, next) => {
     const { username, email, password } = req.body;
     // const hasMissingCredentials = !email || !password || !username; //Error handling //later
     //setting up salt
@@ -57,7 +60,7 @@ router.post("/signup", async (req, res, next) => {
     res.redirect("/");
 });
 
-router.post("/login", async (req, res, next) => {
+router.post("/login", isAnon, async (req, res, next) => {
     try {
         const { email, password } = req.body;
         //get data from Database
@@ -77,7 +80,7 @@ router.post("/login", async (req, res, next) => {
     }
 });
 
-router.post("/create-comment", async (req, res, next) => {
+router.post("/create-comment", isLoggedIn, async (req, res, next) => {
     try {
         //new user just signed Up | User: "Till" writes a new comment.
         //New comment id will update tills comment reference in the database
@@ -103,7 +106,7 @@ router.post("/create-comment", async (req, res, next) => {
 });
 
 // user updates his comment
-router.post("/edit-comment", async (req, res, next) => {
+router.post("/edit-comment", isLoggedIn, async (req, res, next) => {
     try {
         const user = req.session.currentUser; //get current user
         const findUser = await User.findOne({ username: user }); //get current user from database
@@ -121,7 +124,7 @@ router.post("/edit-comment", async (req, res, next) => {
     }
 });
 
-router.post("/delete-user", async (req, res, next) => {
+router.post("/delete-user", isLoggedIn, async (req, res, next) => {
     try {
         console.log("Start deletion of user: ", req.session.currentUser);
         const user = req.session.currentUser; //get current user
@@ -149,7 +152,7 @@ router.post("/delete-user", async (req, res, next) => {
     }
 });
 
-router.post("/logout", async (req, res, next) => {
+router.post("/logout", isLoggedIn, async (req, res, next) => {
     try {
         req.session.destroy(() => {
             res.redirect("/");
