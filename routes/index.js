@@ -5,6 +5,7 @@ const bcrypt = require("bcrypt");
 //requier Models
 const User = require("../models/user.model");
 const Comment = require("../models/comment.model");
+const Result = require('../models/result.model');
 //require middlewares
 const { isAnon, isLoggedIn } = require("../middlewares/index");
 
@@ -31,9 +32,29 @@ router.get("/signup", isAnon, (req, res, next) => {
 router.get("/info", (req, res, next) => {
     res.render("info");
 });
+//counts total vote Numbers and upvotes, writes result in database
+async function calculateComments() {
+    //seed if Result Collection is empty
+    const result = await Result.find()
+    if (!result.length) {
+        await Result.create({name: "totalVotes", totalVotes: 0, upvotes: 0, downvotes: 0})
+    }
+
+    // gathers the data for calculations
+    const totalVotes = await Comment.countDocuments({})     //count of all votes
+    const upvotes = await Comment.countDocuments({isUpvote: true})      //count of all positive voutes
+    const downvotes = totalVotes-upvotes        //total downvotes calculated
+    // saves results of query and calculation to database
+    const finalResult = await Result.findOneAndUpdate({name: 'totalVotes'}, {totalVotes: totalVotes, upvotes: upvotes, downvotes: downvotes})
+    
+    console.log('final result', finalResult)
+
+    
+}
 router.get("/comments", async (req, res, next) => {
     try {
         const users = await User.find().populate("comment");
+        calculateComments()
         res.render("comments", { users });
     } catch (error) {
         console.error(`An error occured while trying to login: ${error}`);
