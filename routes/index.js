@@ -53,14 +53,23 @@ async function calculateComments() {
     { totalVotes: totalVotes, upvotes: upvotes, downvotes: downvotes }
   );
 }
-
 router.get("/comments", async (req, res, next) => {
   try {
+      
     const users = await User.find().populate("comment");
     calculateComments();
     res.render("comments", { users });
   } catch (error) {
     console.error(`An error occured while trying to login: ${error}`);
+  }
+});
+
+router.get("/results", async (req, res, next) => {
+  try {
+    const result = await Result.find();
+    res.json(result);
+  } catch (error) {
+    console.error(`An error occured while trying to get results from database: ${error}`);
   }
 });
 
