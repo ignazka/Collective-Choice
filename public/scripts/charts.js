@@ -1,44 +1,65 @@
-// SETUP
-const labels = ["Results"];
-const data = {
-    labels: labels,
-    datasets: [
-        {
-            label: "downvotes",
-            data: [25],
-            backgroundColor: "rgb(255, 65, 106)",
-        },
-        {
-            label: "upvotes",
-            data: [5],
-            backgroundColor: "rgb(0, 254, 211)",
-        },
-    ],
-};
+function getData() {
+    return axios.get("http://localhost:3000/results");
+}
 
-// CONFIG
-const config = {
-    type: "bar",
-    data: data,
-
-    options: {
-        indexAxis: "y",
-        scales: {
-            x: {
-                stacked: true,
-                display: false,
+function buildChartConfig(databaseData) {
+    // SETUP Chart
+    console.log(databaseData[0].upvotes)
+    
+    
+    const labels = ["Results"];
+    const data = {
+        labels: labels,
+        datasets: [
+            {
+                label: "downvotes",
+                data: [databaseData[0].downvotes],
+                backgroundColor: "rgb(255, 65, 106)",
+                barThickness: 50,
             },
-            y: {
-                stacked: true,
-                display: false,
+            {
+                label: "upvotes",
+                data: [databaseData[0].upvotes],
+                backgroundColor: "rgb(0, 254, 211)",
+                barThickness: 50
+
+            },
+        ],
+    };
+    // CONFIG
+    const config = {
+        type: "bar",
+        data: data,
+
+        options: {
+            responsive: true,
+            indexAxis: "y",
+            scales: {
+                x: {
+                    stacked: true,
+                    display: false,
+                },
+                y: {
+                    stacked: true,
+                    display: false,
+                },
+            },
+            plugins: {
+                legend: {
+                    display: false,
+                },
             },
         },
-        plugins: {
-            legend: {
-                display: false,
-            },
-        },
-    },
-};
+    };
+    return config
+}
 
-const myChart = new Chart(document.getElementById("myChart"), config);
+async function buildChart() {
+    const { data } = await getData();
+    const chartConfig = buildChartConfig(data);
+    const myChart = new Chart(document.getElementById("myChart"), chartConfig);
+}
+
+window.addEventListener("load", () => {
+    buildChart();
+});
