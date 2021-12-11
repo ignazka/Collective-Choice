@@ -35,3 +35,8 @@ nav button {
   border-bottom: 1px solid #333333;
   border-left: 1px solid #CCCCCC;
 }
+
+#chartDiv {
+  background-color: blue;
+  width: 100vw;
+}
