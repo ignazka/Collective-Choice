@@ -1,7 +1,9 @@
-// uses baseURL for axios on production or localhost on dev
-baseUrl = process.env.baseURL || "http://localhost:3000"
+//magic Number for Server
+const isServer = true
+const baseURL = isServer ? "https://collective-choice.herokuapp.com/" : "http://localhost:3000/"
+
 function getData() {
-    return axios.get(baseUrl + "/results");
+    return axios.get(baseURL + "results");
 }
 
 
