@@ -1,31 +1,35 @@
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="HTML, CSS, JavaScript" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Collective Choice</title>
-    <link rel="stylesheet" href="/stylesheets/style.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Anton&display=swap"
-      rel="stylesheet"
-    />
-  </head>
-  <body>
-    <nav>
-      <form action="/logout" method="POST">
-        <button type="submit">logout</button>
-      </form>
-        <a href="/">Home</a>
-        <a href="/login">Log In</a>
-        <a href="/signup">Sign Up</a>
-        <a href="/comments">Comments</a>
-        <a href="/info">i</a>
-    </nav>
-    {{{body}}}
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <script src="/scripts/charts.js"></script>
-  </body>
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="HTML, CSS, JavaScript" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Collective Choice</title>
+        <link rel="stylesheet" href="/stylesheets/style.css" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+            rel="stylesheet"
+        />
+    </head>
+    <body>
+        <div class="crt">
+            <nav>
+                <form action="/logout" method="POST">
+                    <button type="submit">logout</button>
+                </form>
+                <a href="/">Home</a>
+                <a href="/login">Log In</a>
+                <a href="/signup">Sign Up</a>
+                <a href="/comments">Comments</a>
+                <a href="/info">i</a>
+            </nav>
+            {{{body}}}
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script
+            src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"
+        ></script>
+        <script src="/scripts/charts.js"></script>
+    </body>
 </html>
