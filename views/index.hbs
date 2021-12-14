@@ -1,8 +1,16 @@
 <h1>WELCOME</h1>
-<section class="doom-buttons">
-
+  
+<section class="fat-buttons">
+  <form action="/vote" method="post">
+    <button class="btn-green" name="btnGreen" value="green">Green</button>
+    <button class="btn-red" name='btnRed' value="red">Red</button>
+    <br>
+    I am a bot - you are still counted, Terminator.
+    <input type="checkbox" name="isBot" checked>
+  </form>
 </section>
 
+{{!-- COMMENT SECTION --}}
 {{#if user}}
   <section class="comment-form">
     {{#if findUser.comment}}

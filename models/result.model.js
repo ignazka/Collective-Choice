@@ -8,6 +8,10 @@ const resultSchema = new Schema({
   totalVotes: Number,
   upvotes: Number,
   downvotes: Number,
+  anonTotalVotes: Number,
+  anonUpvotes: Number,
+  anonDownvotes: Number,
+  isBot: Number,
 });
 
 module.exports = model("Result", resultSchema);
