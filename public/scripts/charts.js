@@ -1,33 +1,35 @@
 //magic Number for Server
-const isServer = false
-const baseURL = isServer ? "https://collective-choice.herokuapp.com/" : "http://localhost:3000/"
+const isServer = false;
+const baseURL = isServer
+    ? "https://collective-choice.herokuapp.com/"
+    : "http://localhost:3000/";
 
 function getData() {
     return axios.get(baseURL + "results");
 }
 
-
 function buildChartConfig(databaseData) {
     // SETUP Chart
-    console.log(databaseData[0].upvotes)
-    
-    
+    const { downvotes, upvotes, anonDownvotes, anonUpvotes } = databaseData[0];
+    const totalUpvotes = upvotes + anonUpvotes;
+    const totalDownvotes = downvotes + anonDownvotes;
+
     const labels = ["Results"];
     const data = {
         labels: labels,
         datasets: [
             {
                 label: "downvotes",
-                data: [databaseData[0].downvotes],
+                data: [totalDownvotes],
                 backgroundColor: "rgb(255, 65, 106)",
                 barThickness: 80,
+
             },
             {
                 label: "upvotes",
-                data: [databaseData[0].upvotes],
+                data: [totalUpvotes],
                 backgroundColor: "rgb(0, 254, 211)",
-                barThickness: 80
-
+                barThickness: 80,
             },
         ],
     };
@@ -57,7 +59,7 @@ function buildChartConfig(databaseData) {
             },
         },
     };
-    return config
+    return config;
 }
 
 async function buildChart() {
