@@ -1,5 +1,5 @@
 <h1>WELCOME</h1>
-  
+
 <section class="fat-buttons">
   <form action="/vote" method="post">
     <button class="btn-green" name="btnGreen" value="green">Green</button>
@@ -12,11 +12,13 @@
 
 {{!-- COMMENT SECTION --}}
 {{#if user}}
-  <section class="comment-form">
-    {{#if findUser.comment}}
-        {{> editComment}}
-    {{else}}
-        {{> createComment}}
-    {{/if}}
-  </section>
+<section class="comment-form">
+  {{#if findUser.comment}}
+  {{> editComment}}
+  {{else}}
+  {{> createComment}}
+  {{/if}}
+</section>
 {{/if}}
+<div class="crt" id='earth'>
+</div>
