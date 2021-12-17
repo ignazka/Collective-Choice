@@ -33,6 +33,10 @@ body {
 
 }
 
+h1 {
+    margin-bottom: 8%;
+}
+
 section {
     margin: 15px 0;
 }
@@ -111,6 +115,37 @@ nav button {
     filter: brightness(150%);
     transform: translateY(4px);
 }
+
+.login-signup {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    text-align: center;
+}
+.login-signup form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    text-align: center;
+}
+.login-signup label {
+    margin-bottom: 2%;
+    margin-top: 8%;
+}
+.login-signup input{
+    background-color: transparent;
+    /* border: none; */
+}
+.login-signup button {
+    background-color: transparent;
+    border: none;
+    margin-top: 8%;
+}
+
+
+
 
 /* TEXT STYLE ANIMATION FLICKERING */
 @keyframes textShadow {
