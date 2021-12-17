@@ -144,7 +144,7 @@ nav button {
 }
 
 #earth {
-  font-size: 9;
+    font-size: 9;
     text-rendering: optimizeSpeed;
     width: 20em;
 }
