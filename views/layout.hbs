@@ -12,19 +12,24 @@
             rel="stylesheet"
         />
     </head>
-    <body>
-        <div class="crt">
+    <body class="crt">
+        <header>
             <nav>
-                <form action="/logout" method="POST">
-                    <button type="submit">logout</button>
-                </form>
-                <a href="/">Home</a>
-                <a href="/login">Log In</a>
-                <a href="/signup">Sign Up</a>
-                <a href="/comments">Comments</a>
-                <a href="/info">i</a>
+                <ul>
+                <li><form action="/logout" method="POST">
+                    <button class="crt" type="submit">logout</button>
+                </form></li>
+                <li><a href="/">home</a></li>
+                <li><a href="/login">login</a></li>
+                <li><a href="/signup">signup</a></li>
+                <li><a href="/comments">comments</a></li>
+                <li><a href="/info">FAQ</a></li>
+
+                </ul>
             </nav>
-            {{{body}}}
-        </div>
+        </header>
+        {{{body}}}
+        <footer>
+        </footer>
     </body>
 </html>
