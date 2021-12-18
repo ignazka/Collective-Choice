@@ -1,5 +1,5 @@
 //magic Number for Server
-const isServer = true;
+const isServer = false;
 const baseURL = isServer
     ? "https://collective-choice.herokuapp.com/"
     : "http://localhost:3000/";
