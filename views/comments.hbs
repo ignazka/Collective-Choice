@@ -4,14 +4,14 @@
   <canvas id="myChart"></canvas>
 </div>
 
-<section class="comments">
+<div class="comments">
   {{#each users}}
-      <div class="comment">
-          User: {{username}}
-          {{> comment comment}}
-      </div>
+    <div class="comment">
+      <p>User: {{username}}</p>
+      {{> comment comment}}
+    </div>
   {{/each}}
-</section>
+</div>
 
 {{!-- Script loading --}}
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>

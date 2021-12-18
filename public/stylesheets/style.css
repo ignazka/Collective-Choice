@@ -80,6 +80,12 @@ nav button {
 .comment {
   margin: 20px 0;
 }
+.comment-upvote * {
+  color: green;
+}
+.comment-downvote * {
+  color: red;
+}
 
 /* ASCII EARTH Styling */
 #earth {
