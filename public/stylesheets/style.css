@@ -172,7 +172,7 @@ nav button {
 }
 .login-signup button {
   background-color: transparent;
-  border: none;
+  /* border: none; */
   margin-top: 8%;
 }
 
