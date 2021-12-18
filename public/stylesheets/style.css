@@ -81,10 +81,10 @@ nav button {
   margin: 20px 0;
 }
 .comment-upvote * {
-  color: green;
+  color: #00e58d;
 }
 .comment-downvote * {
-  color: red;
+  color: #ff466e;
 }
 
 /* ASCII EARTH Styling */
