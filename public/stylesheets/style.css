@@ -105,6 +105,13 @@ nav button {
   text-rendering: optimizeSpeed;
   text-align: center;
 }
+#signup-ascii {
+  font-size: 9;
+  margin-top: 5%;
+  width: 24em;
+  text-rendering: optimizeSpeed;
+  text-align: center;
+}
 
 /* INDEX */
 /* Checkbox */
