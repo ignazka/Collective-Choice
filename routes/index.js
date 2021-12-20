@@ -19,7 +19,7 @@ router.get("/", async (req, res, next) => {
     if (user) {
         res.render("index", { user, findUser });
     } else {
-        res.render("index");
+        res.render("index", { user });
     }
 });
 router.get("/login", isAnon, (req, res, next) => {
@@ -29,7 +29,9 @@ router.get("/signup", isAnon, (req, res, next) => {
     res.render("signup");
 });
 router.get("/info", (req, res, next) => {
-    res.render("info");
+    const user = req.session.currentUser;
+
+    res.render("info", {user});
 });
 //counts total vote Numbers and upvotes, writes result in database
 async function calculateComments() {
@@ -66,9 +68,11 @@ async function calculateComments() {
 }
 router.get("/comments", async (req, res, next) => {
     try {
+        const user = req.session.currentUser;
+
         const users = await User.find().populate("comment");
         calculateComments();
-        res.render("comments", { users });
+        res.render("comments", { users, user });
     } catch (error) {
         console.error(`An error occured while trying to login: ${error}`);
     }
@@ -171,7 +175,6 @@ router.post("/edit-comment", isLoggedIn, async (req, res, next) => {
 
 router.post("/delete-user", isLoggedIn, async (req, res, next) => {
     try {
-        console.log("Start deletion of user: ", req.session.currentUser);
         const user = req.session.currentUser; //get current user
         console.log(user);
         const findUser = await User.findOne({ username: user });
