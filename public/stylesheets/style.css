@@ -170,11 +170,21 @@ nav button {
   background-color: transparent;
   /* border: none; */
 }
-.login-signup button {
+button {
   background-color: transparent;
   /* border: none; */
   margin-top: 8%;
 }
+textarea {
+  background-color: transparent;
+}
+select {
+  background-color: transparent;
+}
+option {
+  background-color: var(--background);
+}
+
 
 .FAQ {
   width: 80%;
