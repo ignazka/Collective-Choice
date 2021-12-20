@@ -1,22 +1,25 @@
-<form action="/create-comment" method="post" id="commentForm">
-    <label for="content">Comment</label>
-    <br>
-    <textarea
-        rows="4"
-        cols="50"
-        name="content"
-        form="commentForm"
-        placeholder="I have allergies. Nature is my enemy. World should end."
-    ></textarea>
-    <br>
-    <select name="isUpvote" id="isUpvote">
-        <option value="false">Destroy the World</option>
-        <option value="true">Save the World</option>
-    </select>
-    <button type="submit">Submit</button>
-</form>
+<div class='edit-and-create'>
+
+    <form action="/create-comment" method="post" id="commentForm">
+        <label for="content">Comment</label>
+        <br>
+        <textarea
+            rows="4"
+            cols="50"
+            name="content"
+            form="commentForm"
+            placeholder="I have allergies. Nature is my enemy. World should end."
+        ></textarea>
+        <br>
+        <select name="isUpvote" id="isUpvote">
+            <option value="false">Destroy the World</option>
+            <option value="true">Save the World</option>
+        </select>
+        <button type="submit">Submit</button>
+    </form>
 
 
-<form action="/delete-user" method="post">
-    <button type="submit">Delete Account</button>
-</form>
+    <form action="/delete-user" method="post">
+        <button type="submit">Delete Account</button>
+    </form>
+</div>

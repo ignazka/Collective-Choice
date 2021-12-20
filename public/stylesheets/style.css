@@ -189,6 +189,20 @@ option {
   background-color: var(--background);
 }
 
+.edit-and-create {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  text-align: center;
+}
+.edit-and-create form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  text-align: center;
+}
 
 .FAQ {
   width: 80%;
