@@ -1,5 +1,5 @@
 {{!-- VOTE-BUTTONS --}}
-{{#if isUser}}
+{{#unless user}}
   <section>
     <form class="fat-buttons" action="/vote" method="post">
       <div class="ctn-buttons">
@@ -9,15 +9,14 @@
         <button class="btn-red" name='btnRed' value="red">
           <img src="/images/cloud-button.png" alt="red-button to doom the world">
         </button>
-        
       </div>
       <div class="form-checkbox">
         <input type="checkbox" name="isBot" checked> 
         I am a bot - you are still counted, Terminator.
       </div>
     </form>
-</section>
-{{/if}}
+  </section>
+{{/unless}}
 
 {{!-- COMMENT SECTION --}}
 {{#if user}}
