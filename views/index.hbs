@@ -1,20 +1,23 @@
 {{!-- VOTE-BUTTONS --}}
-<section>
-  <form class="fat-buttons" action="/vote" method="post">
-    <div class="ctn-buttons">
-      <button class="btn-green" name="btnGreen" value="green">  
-        <img src="/images/seed-button.png" alt="green-button to save the world"> 
-      </button>
-      <button class="btn-red" name='btnRed' value="red">
-        <img src="/images/cloud-button.png" alt="red-button to doom the world">
-      </button>
-    </div>
-    <div class="form-checkbox">
-      <input type="checkbox" name="isBot" checked> 
-      I am a bot - you are still counted, Terminator.
-    </div>
-  </form>
+{{#if isUser}}
+  <section>
+    <form class="fat-buttons" action="/vote" method="post">
+      <div class="ctn-buttons">
+        <button class="btn-green" name="btnGreen" value="green">  
+          <img src="/images/seed-button.png" alt="green-button to save the world"> 
+        </button>
+        <button class="btn-red" name='btnRed' value="red">
+          <img src="/images/cloud-button.png" alt="red-button to doom the world">
+        </button>
+        
+      </div>
+      <div class="form-checkbox">
+        <input type="checkbox" name="isBot" checked> 
+        I am a bot - you are still counted, Terminator.
+      </div>
+    </form>
 </section>
+{{/if}}
 
 {{!-- COMMENT SECTION --}}
 {{#if user}}

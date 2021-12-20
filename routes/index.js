@@ -106,7 +106,7 @@ router.post("/signup", isAnon, async (req, res, next) => {
         password: hashedPassword,
     };
     const newUser = await User.create(newUserData);
-    res.redirect("/");
+    res.redirect("/login");
 });
 
 router.post("/login", isAnon, async (req, res, next) => {
