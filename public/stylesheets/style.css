@@ -92,6 +92,10 @@ nav button {
 .comment-downvote * {
   color: #ff466e;
 }
+#username {
+  font-size: 22px;
+  margin-bottom: 5px;
+}
 
 /* ASCII EARTH Styling */
 #earth {
