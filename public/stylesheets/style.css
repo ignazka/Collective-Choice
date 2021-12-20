@@ -166,20 +166,24 @@ nav button {
   margin-bottom: 2%;
   margin-top: 8%;
 }
-.login-signup input {
+input {
   background-color: transparent;
   /* border: none; */
+  border-color: rgb(255, 255, 255, .2);
 }
 button {
   background-color: transparent;
   /* border: none; */
   margin-top: 8%;
+  border-color: rgb(255, 255, 255, .2);
 }
 textarea {
   background-color: transparent;
+  border-color: rgb(255, 255, 255, .2);
 }
 select {
   background-color: transparent;
+  border-color: rgb(255, 255, 255, .2);
 }
 option {
   background-color: var(--background);
