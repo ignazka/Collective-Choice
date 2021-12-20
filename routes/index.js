@@ -179,13 +179,15 @@ router.post("/edit-comment", isLoggedIn, async (req, res, next) => {
 router.post("/delete-user", isLoggedIn, async (req, res, next) => {
     try {
         const user = req.session.currentUser; //get current user
-        console.log(user);
         const findUser = await User.findOne({ username: user });
-        console.log("find user:", findUser);
-        const commentID = await findUser.comment._id; //saves the comment id, linked to the user
-        console.log("comment id is: ", commentID);
-        await Comment.findOneAndDelete({ _id: commentID });
-        console.log("Comment deleted");
+        try {
+            const commentID = await findUser.comment._id; //saves the comment id, linked to the user
+            console.log("comment id is: ", commentID);
+            await Comment.findOneAndDelete({ _id: commentID });
+            console.log("Comment deleted");
+        } catch (error) {
+            console.log("This user does not have a comment", error)
+        }
         await User.findOneAndDelete({ username: user });
         console.log("User deleted");
         req.session.destroy(() => {
