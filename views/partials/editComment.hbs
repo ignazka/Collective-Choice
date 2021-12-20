@@ -5,8 +5,13 @@
         cols="50"
         name="content"
     >{{findUser.comment.content}}</textarea>
+<select name="isUpvote" id="isUpvote">
+        <option value="false">Destroy the World</option>
+        <option value="true">Save the World</option>
+    </select>
     <button type="submit">Update</button>
 </form>
+
 <form action="/delete-user" method="post">
     <button type="submit">Delete Account</button>
 </form>

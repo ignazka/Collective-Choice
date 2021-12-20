@@ -157,13 +157,16 @@ router.post("/create-comment", isLoggedIn, async (req, res, next) => {
 // user updates his comment
 router.post("/edit-comment", isLoggedIn, async (req, res, next) => {
     try {
+
         const user = req.session.currentUser; //get current user
+        console.log('req.body', req.body)
         const findUser = await User.findOne({ username: user }); //get current user from database
         const commentID = findUser.comment._id; //saves the comment id, linked to the user
         //updates the users comment content
         await Comment.findOneAndUpdate(
             { _id: commentID },
-            { content: req.body.content }
+            { content: req.body.content,
+             isUpvote: req.body.isUpvote }
         );
         res.redirect("/comments");
     } catch (error) {
