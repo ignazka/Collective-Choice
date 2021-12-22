@@ -1,5 +1,5 @@
 //magic Number for Server
-const isServer = true;
+const isServer = false;
 const baseURL = isServer
     ? "https://collective-choice.herokuapp.com/"
     : "http://localhost:3000/";
@@ -94,7 +94,7 @@ function buildPieChartConfig(databaseData) {
             {
                 label: "Dataset 1",
                 data: [isBot, totalVotes, anonTotalVotes],
-                backgroundColor: ["rgb(255, 0, 0)", "rgb(0, 255, 0)", "rgb(0, 0, 255)"],
+                backgroundColor: ["rgb(255, 65, 106)", "rgb(0, 254, 211)", "rgb(5, 155, 255)"],
             },
         ],
     };
