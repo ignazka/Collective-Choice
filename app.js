@@ -9,8 +9,11 @@ require("dotenv").config();
 // requierements for sessions and cookies
 const session = require("express-session")
 const MongoStore = require("connect-mongo")
+// requirements for connect-flash to handle errors
+const flash = require('connect-flash')
 // gets data from env, for cleaner code later
 const { NODE_ENV, SESS_SECRET, MONGODB_URL, PORT } = process.env;
+
 
 
 // creating instance of express server and config
@@ -59,6 +62,9 @@ app.use(
     }),
   })
   );
+
+  //ERROR HANDLING
+  app.use(flash())
   
   //ROUTER HANDLING
   const index = require("./routes/index");
@@ -79,6 +85,7 @@ app.use(
     }
   }
   mongoConnect();
+
   // start server
   app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
   
