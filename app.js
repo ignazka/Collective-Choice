@@ -7,20 +7,22 @@ const hbs = require("hbs");
 // require .env for mongodb and session
 require("dotenv").config();
 // requierements for sessions and cookies
-const session = require("express-session")
-const MongoStore = require("connect-mongo")
+const session = require("express-session");
+const MongoStore = require("connect-mongo");
+// requirements for passport.js middleware
+const passport = require("passport");
+const LocalStrategy = require("passport-local").LocalStrategy;
+
 // requirements for connect-flash to handle errors
-const flash = require('connect-flash')
+const flash = require("connect-flash");
 // gets data from env, for cleaner code later
 const { NODE_ENV, SESS_SECRET, MONGODB_URL, PORT } = process.env;
-
-
 
 // creating instance of express server and config
 const app = express();
 
 app.use(express.json());
-app.use(express.urlencoded({ extended: true} ));
+app.use(express.urlencoded({ extended: true }));
 
 // Normalizes the path to the views folder
 app.set("views", path.join(__dirname, ".", "views"));
@@ -33,7 +35,7 @@ hbs.registerPartials(__dirname + "/views/partials");
 
 //SESSION CONFIGURATION
 // are we on a production site?
-const isProduction = NODE_ENV === 'production'
+const isProduction = NODE_ENV === "production";
 // cookie configuration
 app.set("trust proxy", 1);
 app.use(
@@ -61,32 +63,34 @@ app.use(
       ttl: 60 * 60 * 24,
     }),
   })
-  );
+);
 
-  //ERROR HANDLING
-  app.use(flash())
-  
-  //ROUTER HANDLING
-  const index = require("./routes/index");
-  app.use("/", index);
-  
-  const mongoose = require("mongoose");
-  // ℹ️ Sets the MongoDB URI for our app to have access to it.
+//PASSPORT
+app.use(passport.initialize());
+app.use(passport.session());
 
-  async function mongoConnect() {
-    try {
-      await mongoose.connect(MONGODB_URL, {
-        useNewUrlParser: true,
-        useUnifiedTopology: true,
-      });
-      console.log("Connected to Mongo!");
-    } catch (error) {
-      console.error("Error connecting to MongoDB: ", error);
-    }
+//ERROR HANDLING
+app.use(flash());
+
+//ROUTER HANDLING
+const index = require("./routes/index");
+app.use("/", index);
+
+const mongoose = require("mongoose");
+// ℹ️ Sets the MongoDB URI for our app to have access to it.
+
+async function mongoConnect() {
+  try {
+    await mongoose.connect(MONGODB_URL, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    });
+    console.log("Connected to Mongo!");
+  } catch (error) {
+    console.error("Error connecting to MongoDB: ", error);
   }
-  mongoConnect();
+}
+mongoConnect();
 
-  // start server
-  app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
-  
-  
+// start server
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
