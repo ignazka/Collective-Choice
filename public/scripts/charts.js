@@ -1,5 +1,5 @@
 //magic Number for Server
-const isServer = false;
+const isServer = true;
 const baseURL = isServer
     ? "https://collective-choice.herokuapp.com/"
     : "http://localhost:3000/";
@@ -8,21 +8,16 @@ function getData() {
     return axios.get(baseURL + "results");
 }
 
-function buildChartConfig(databaseData) {
+function buildTotalChartConfig(databaseData) {
     // SETUP Chart
     const { 
         downvotes, 
         upvotes, 
         anonDownvotes, 
-        anonUpvotes, 
-        isBot,
-        anonTotalVotes,
-        totalVotes
+        anonUpvotes,
      } = databaseData[0];
     const totalUpvotes = upvotes + anonUpvotes;
     const totalDownvotes = downvotes + anonDownvotes;
-    const allVotes = totalVotes + anonTotalVotes
-    
 
     const labels = ["Results"];
     const data = {
@@ -73,19 +68,11 @@ function buildChartConfig(databaseData) {
 }
 function buildPieChartConfig(databaseData) {
     // SETUP Chart
-    const { 
-        downvotes, 
-        upvotes, 
-        anonDownvotes, 
-        anonUpvotes, 
+    const {
         isBot,
         anonTotalVotes,
         totalVotes
      } = databaseData[0];
-    const totalUpvotes = upvotes + anonUpvotes;
-    const totalDownvotes = downvotes + anonDownvotes;
-    const allVotes = totalVotes + anonTotalVotes
-    
 
     const labels = ["Bots", "SignedUp Users", "Anonymous Users"];
     const data = {
@@ -93,7 +80,7 @@ function buildPieChartConfig(databaseData) {
         datasets: [
             {
                 label: "Dataset 1",
-                data: [isBot, totalVotes, anonTotalVotes],
+                data: [isBot, totalVotes, anonTotalVotes-isBot],
                 backgroundColor: ["rgb(255, 65, 106)", "rgb(0, 254, 211)", "rgb(5, 155, 255)"],
             },
         ],
@@ -117,9 +104,10 @@ function buildPieChartConfig(databaseData) {
 }
 
 async function buildCharts() {
-    const { data } = await getData();
-    const chartConfig = buildChartConfig(data);
-    const myChart = new Chart(document.getElementById("myChart"), chartConfig);
+    //build up vs down votes
+    const { data } = await getData(); //gets all the data from server->result Modell
+    const totalChartConfig = buildTotalChartConfig(data);
+    const totalChart = new Chart(document.getElementById("totalChart"), totalChartConfig);
     // build pieChart
     const pieChartConfig = buildPieChartConfig(data)
     const pieChart = new Chart(document.getElementById("pieChart"), pieChartConfig)
