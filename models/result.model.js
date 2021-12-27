@@ -12,6 +12,8 @@ const resultSchema = new Schema({
   anonUpvotes: Number,
   anonDownvotes: Number,
   isBot: Number,  // is included in anonTotalVotes
+  timestampsUpvotes: [Date],
+  timestampsDownvotes: [Date],
 });
 
 module.exports = model("Result", resultSchema);
