@@ -47,6 +47,8 @@ async function calculateComments() {
             downvotes: 0,
             anonDownvotes: 0,
             isBot: 0,
+            timestampsUpvotes: [],
+            timestampsDownvotes: [],
         });
     }
     // gathers the data for calculations
@@ -89,8 +91,8 @@ router.get("/results", async (req, res, next) => {
     }
 });
 
-//POST
 
+//POST
 router.post("/signup", isAnon, async (req, res, next) => {
     const { username, email, password } = req.body;
     // const hasMissingCredentials = !email || !password || !username; //Error handling //later
@@ -211,22 +213,27 @@ router.post("/logout", isLoggedIn, async (req, res, next) => {
 });
 
 // anon Votingsystem, increments anonVotes in Database
+// Results does have only one document
 router.post("/vote", isAnon, async (req, res, next) => {
+    // get current Date to save into Result document
+    const currentDate = new Date()
     try {
-        //if btn-green: green
-        //upvote for save the planet
+        //upvote for save the planet and save current Date
         if (req.body.btnGreen === "green") {
-            await Result.updateOne({ $inc: { anonUpvotes: +1 } });
+            await Result.updateOne({ $inc: { anonUpvotes: +1 } }, 
+                { $push: { timestampsUpvotes: currentDate } });
         }
-        // //if btn-red: red
-        // //downvote for doom the planet
+        // //downvote for doom the planet and save current Date
         if (req.body.btnRed === "red") {
-            await Result.updateOne({ $inc: { anonDownvotes: +1 } });
+            await Result.updateOne({ $inc: { anonDownvotes: +1 } },
+                { $push: { timestampsDownvotes: currentDate } });
         }
         //if isBot true, increment bot voting number in results
         if (req.body.isBot) {
             await Result.updateOne({ $inc: { isBot: +1 } });
         }
+
+        // redirect to comment-section
         res.redirect("/comments");
     } catch (error) {
         console.error(`An Error occured while trying to vote ${error}`);
