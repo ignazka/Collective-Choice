@@ -92,7 +92,6 @@ function buildPieChartConfig(databaseData) {
 
         options: {
             responsive: true,
-            maintainAspectRatio: false,
             plugins: {
                 legend: {
                     display: true,
