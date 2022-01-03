@@ -68,8 +68,8 @@ nav button {
 }
 
 /* COMMENTS */
-/* CHART */
-#chartDiv {
+/* CHARTS */
+#totalChartDiv {
   background-color: var(--background);
   width: 80%;
   height: 80px;

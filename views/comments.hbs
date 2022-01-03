@@ -1,7 +1,7 @@
 <h1>Comments</h1>
 
-<div id="chartDiv">
-  <canvas id="myChart"></canvas>
+<div id="totalChartDiv">
+  <canvas id="totalChart"></canvas>
 </div>
 
 <div class="comments">
@@ -12,6 +12,15 @@
     </div>
   {{/each}}
 </div>
+<h2>Votes by usertype</h2>
+<div id="pieChartDiv">
+  <canvas id="pieChart"></canvas>
+</div>
+<h2>TimeStamps</h2>
+<div id="timeStampChartDiv">
+  <canvas id="timeStampChart"></canvas>
+</div>
+
 
 {{!-- Script loading --}}
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
