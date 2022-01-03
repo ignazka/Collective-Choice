@@ -1,6 +1,13 @@
 {{!-- VOTE-BUTTONS --}}
 {{#unless user}}
+
   <section>
+    <div id='callToAction'>
+      <p>Push the red button to vote for worlds end</p>
+      <p>Push the green button to vote for worlds persist</p>
+      <p>Register to leave a comment for your voting</p>
+    </div>
+    <hr>
     <form class="fat-buttons" action="/vote" method="post">
       <div class="ctn-buttons">
         <button class="btn-green" name="btnGreen" value="green">  

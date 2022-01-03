@@ -134,6 +134,15 @@ nav button {
   width: 80%;
   text-align: center;
 }
+/* CALL TO ACTION */
+
+#callToAction {
+  text-align: center;
+  font-size: 0.9em;
+  padding: 20px;
+  line-height: 50px;
+}
+
 /* BUTTONS */
 .fat-buttons {
   display: flex;
