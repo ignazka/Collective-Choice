@@ -96,6 +96,14 @@ nav button {
   font-size: 22px;
   margin-bottom: 5px;
 }
+#timeStampChartDiv {
+  background-color: var(--background);
+  width: 80%;
+}
+#pieChartDiv {
+  background-color: var(--background);
+  width: 50%;
+}
 
 /* ASCII EARTH Styling */
 #earth {
