@@ -103,6 +103,111 @@ function buildPieChartConfig(databaseData) {
     return config;
 }
 
+function buildTimeStampChartConfig(databaseData) {
+    // database data
+    const {
+        isBot,
+        anonTotalVotes,
+        totalVotes,
+        timestampsUpvotes,
+        timestampsDownvotes
+        } = databaseData[0];
+        // array with all dates of Upvotes: unique
+        const dateSet = new Set()
+        
+        // pushes every upvote timestamp into dateSet
+        timestampsUpvotes.forEach(item => {
+            //matches everything before T: 2022-01-02T19:11:07.910+00:00 -> 2022-01-02
+            const filteredDate = item.match(/^.*?(?=T)/)
+            dateSet.add(filteredDate[0])
+        })
+        
+        // pushes every downvote timestamp into dateSet
+        timestampsDownvotes.forEach(item => {
+            //matches everything before T: 2022-01-02T19:11:07.910+00:00 -> 2022-01-02
+            const filteredDate = item.match(/^.*?(?=T)/)
+            dateSet.add(filteredDate[0])
+        })
+        const dateArray = Array.from(dateSet);
+
+        // arrays to be used in chart, congruent to date
+        votesArray = []
+        upvotesArray = []
+        downvotesArray = []
+        // Get total votes for each day
+        dateArray.forEach( date => {
+            // set the counters to count votes for each date
+            let upvoteCounterOfTheDate = 0
+            let downvoteCounterOfTheDate = 0
+            // iterates through timeStampUp/Downvotes from database, to count occurences
+            timestampsUpvotes.forEach(timestamp => {
+                if(timestamp.includes(date)){
+                    upvoteCounterOfTheDate++;
+                }
+            })
+            timestampsDownvotes.forEach(timestamp => {
+                if(timestamp.includes(date)){
+                    downvoteCounterOfTheDate++;
+                }
+            })
+            votesArray.push(upvoteCounterOfTheDate + downvoteCounterOfTheDate)
+            upvotesArray.push(upvoteCounterOfTheDate)
+            downvotesArray.push(downvoteCounterOfTheDate)
+        })
+
+        //"rgb(255, 65, 106)", "rgb(0, 254, 211)", "rgb(5, 155, 255)"
+
+    //SETUP
+    const labels = dateArray;
+    const data = {
+    labels: labels,
+    datasets: [
+        {
+        label: 'Upvotes',
+        data: upvotesArray,
+        borderColor:  "rgb(0, 254, 211)",
+        backgroundColor: "rgb(0, 254, 211)",
+        order: 1
+        },
+        {
+        label: 'Downvotes',
+        data: downvotesArray,
+        borderColor: "rgb(255, 65, 106)",
+        backgroundColor: "rgb(255, 65, 106)",
+        order: 1
+        },
+        {
+        label: 'All Votes',
+        data: votesArray,
+        borderColor: "rgb(5, 155, 255)",
+        backgroundColor: "rgb(5, 155, 255)",
+        type: 'line',
+        order: 0
+        }
+    ]
+    };
+    
+    //CONFIG
+    const config = {
+        type: 'bar',
+        data: data,
+        options: {
+          responsive: true,
+          plugins: {
+            legend: {
+              position: 'top',
+            },
+            title: {
+              display: true,
+              text: 'Chart.js Combined Line/Bar Chart'
+            }
+          }
+        },
+    };
+    return config;
+
+}
+
 async function buildCharts() {
     //build up vs down votes
     const { data } = await getData(); //gets all the data from server->result Modell
@@ -111,6 +216,9 @@ async function buildCharts() {
     // build pieChart
     const pieChartConfig = buildPieChartConfig(data)
     const pieChart = new Chart(document.getElementById("pieChart"), pieChartConfig)
+    // // build timeStampChart
+    const timeStampChartConfig = buildTimeStampChartConfig(data)
+    const timeStampChart = new Chart(document.getElementById("timeStampChart"), timeStampChartConfig)
 }
 
 window.addEventListener("load", () => {
