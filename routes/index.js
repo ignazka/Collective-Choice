@@ -220,13 +220,11 @@ router.post("/vote", isAnon, async (req, res, next) => {
     try {
         //upvote for save the planet and save current Date
         if (req.body.btnGreen === "green") {
-            await Result.updateOne({ $inc: { anonUpvotes: +1 } }, 
-                { $push: { timestampsUpvotes: currentDate } });
+            await Result.updateOne({ $inc: { anonUpvotes: +1 }, $push: { timestampsUpvotes: currentDate } })
         }
         // //downvote for doom the planet and save current Date
         if (req.body.btnRed === "red") {
-            await Result.updateOne({ $inc: { anonDownvotes: +1 } },
-                { $push: { timestampsDownvotes: currentDate } });
+            await Result.updateOne({ $inc: { anonDownvotes: +1 }, $push: { timestampsDownvotes: currentDate } });
         }
         //if isBot true, increment bot voting number in results
         if (req.body.isBot) {
