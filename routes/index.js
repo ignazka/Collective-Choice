@@ -238,4 +238,9 @@ router.post("/vote", isAnon, async (req, res, next) => {
     }
 });
 
+router.all('*', (req, res) => {
+    // code logic
+    res.render("404");
+})
+
 module.exports = router;
