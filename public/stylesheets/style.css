@@ -68,12 +68,6 @@ nav button {
 }
 
 /* COMMENTS */
-/* CHARTS */
-#totalChartDiv {
-  background-color: var(--background);
-  width: 80%;
-  height: 80px;
-}
 .comments {
   width: 80%;
   margin-top: 2%;
@@ -96,13 +90,20 @@ nav button {
   font-size: 22px;
   margin-bottom: 5px;
 }
+
+/* CHARTS */
+#totalChartDiv {
+  background-color: var(--background);
+  width: 80%;
+  height: 80px;
+}
 #timeStampChartDiv {
   background-color: var(--background);
   width: 80%;
 }
 #pieChartDiv {
   background-color: var(--background);
-  width: 50%;
+  width: 80%;
 }
 
 /* ASCII EARTH Styling */
