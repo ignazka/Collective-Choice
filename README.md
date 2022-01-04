@@ -30,7 +30,7 @@ User profile:
 - location
 
 Theme:
-- dark theme
+- light theme
 
 ChartJS:
 - tags
@@ -66,6 +66,8 @@ Comments:
   - redirects to / 
 - GET /comments
   - renders comment view
+- GET /info
+  - renders FAQ view
 
 ## Models
 
@@ -76,23 +78,30 @@ username: String
 password: String
 email: String
 comment: reference to comment-object-id-object
-downvote: [reference to comment-object-id-object]
-upvote: [reference to comment-object-id-object]
 ```
 
 Comment model
 
 ```
-centent: String
-downvotes: Int
-upvotes: Int
+content: String, required
+isUpvote: Boolean
+upvotes: Number
+downvotes: Number
 ``` 
 
 Result model
 
 ```
-downvotes: Int
-upvotes: Int
+name: String
+totalVotes: Number
+upvotes: Number
+downvotes: Number
+anonTotalVotes: Number
+anonUpvotes: Number
+anonDownvotes: Number
+isBot: Number
+timestampsUpvotes: [Date]
+timestampsDownvotes: [Date]
 ``` 
 
 
