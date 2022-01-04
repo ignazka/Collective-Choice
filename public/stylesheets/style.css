@@ -138,9 +138,11 @@ nav button {
 
 #callToAction {
   text-align: center;
-  font-size: 0.9em;
-  padding: 20px;
-  line-height: 50px;
+  font-size: 0.8em;
+}
+#callToAction p {
+  line-height: 25px;
+  margin-bottom: 20px;
 }
 
 /* BUTTONS */
