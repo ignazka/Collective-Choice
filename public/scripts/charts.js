@@ -28,7 +28,6 @@ function buildTotalChartConfig(databaseData) {
                 data: [totalDownvotes],
                 backgroundColor: "rgb(255, 65, 106)",
                 barThickness: 80,
-
             },
             {
                 label: "upvotes",
@@ -89,7 +88,6 @@ function buildPieChartConfig(databaseData) {
     const config = {
         type: "doughnut",
         data: data,
-
         options: {
             responsive: true,
             plugins: {
@@ -105,9 +103,6 @@ function buildPieChartConfig(databaseData) {
 function buildTimeStampChartConfig(databaseData) {
     // database data
     const {
-        isBot,
-        anonTotalVotes,
-        totalVotes,
         timestampsUpvotes,
         timestampsDownvotes
         } = databaseData[0];
@@ -153,8 +148,6 @@ function buildTimeStampChartConfig(databaseData) {
             upvotesArray.push(upvoteCounterOfTheDate)
             downvotesArray.push(downvoteCounterOfTheDate)
         })
-
-        //"rgb(255, 65, 106)", "rgb(0, 254, 211)", "rgb(5, 155, 255)"
 
     //SETUP
     const labels = dateArray;
@@ -206,7 +199,7 @@ function buildTimeStampChartConfig(databaseData) {
     return config;
 
 }
-
+// builds charts and renders them to the user
 async function buildCharts() {
     //build up vs down votes
     const { data } = await getData(); //gets all the data from server->result Modell
