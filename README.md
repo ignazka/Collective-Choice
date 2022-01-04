@@ -2,11 +2,10 @@
 
 ## Description
 
-1. Vote for worlds ending
-2. users can push the red or green button, to save the world or save it from doom
+1. vote for worlds ending
+2. users can push the red or green button, to destroy the world or save it from doom
 3. if red or green button votes reach critical mass, world ends or is saved for ever
-4. registred users are able to specify their reason of choice
-5. other users are able to up or downvote reasons - this multiplies into the global choice
+4. registered users are able to specify the reason of their choice
 
 ## User Stories
 
