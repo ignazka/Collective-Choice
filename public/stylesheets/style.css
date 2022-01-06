@@ -110,7 +110,19 @@ nav button {
 }
 #pieChartDiv {
   background-color: var(--background);
-  width: 60%;
+  width: 100%;
+}
+@media screen and (min-width: 500px) {
+  #pieChartDiv {
+    background-color: var(--background);
+    width: 50%;
+  }
+}
+@media screen and (min-width: 1000px) {
+  #pieChartDiv {
+    background-color: var(--background);
+    width: 30%;
+  }
 }
 
 /* ASCII EARTH Styling */
