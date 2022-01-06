@@ -36,6 +36,10 @@ h1 {
 h2 {
   margin: 3% 0 0.5%;
 }
+h3 {
+  margin: 3% 0 0.5%;
+  text-align: center;
+}
 
 /* NAVIGATION */
 nav {
