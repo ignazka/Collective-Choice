@@ -1,4 +1,5 @@
 # Collective Choice aka Codename Rottweiler
+a pair-programming project as a part of the ironhack bootcamp.
 
 ## Description
 
